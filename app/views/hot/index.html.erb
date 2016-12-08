@@ -1,0 +1,16 @@
+
+<div class='container'>
+		<% @listings.each do |listing| %>
+	<div class='row listing'>
+			<div class="col-md-4">
+				<image src=<%= listing.thumbnail %>></image>
+			</div>
+			<div class='col-md-2'>
+					<%= listing.author %>
+			</div>
+			<div class='col-md-6'>
+				<%= listing.title %>
+			</div>
+	</div>
+		<% end %>
+</div>
