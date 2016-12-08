@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'figaro'
 gem 'bootstrap-sass'
+gem 'base32'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -37,6 +38,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
 	gem 'rspec-rails'
 	gem 'better_errors'
+	gem 'pry'
 end
 
 group :development do
