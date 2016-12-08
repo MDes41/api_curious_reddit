@@ -16,9 +16,8 @@ ActiveRecord::Schema.define(version: 20161207182024) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
     t.string   "username"
-    t.string   "uid"
+    t.string   "karma"
     t.string   "access_token"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
