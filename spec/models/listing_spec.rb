@@ -6,7 +6,7 @@ describe Listing do
 
       response =
                       {
-                        "kind": "t3",
+                        :kind => "t3",
                         :data => {
                           "subreddit": "funny",
                           "likes": "null",
@@ -52,10 +52,27 @@ describe Listing do
       expect(one_listing.title).to eq("Contractor gets in the cabinet he just built to prove its sturdiness")
     end
 
-    it 'returns listing objects for repos' do
-      VCR.use_cassette('listing_model') do
+    it 'returns hot listing objects for repos' do
+      VCR.use_cassette('listing_hot') do
         token = ENV['reddit_token']
-        repos = Listing.get_listings(token)
+        url = 'hot'
+        repos = Listing.get_listings(token, url)
+        repo = repos.first
+
+        expect(repos).to be_an(Array)
+        expect(repo).to be_a(Listing)
+        expect(repo).to respond_to(:title)
+        expect(repo).to respond_to(:thumbnail)
+        expect(repo).to respond_to(:author)
+        expect(repo).to respond_to(:kind)
+      end
+    end
+
+    it 'returns new listing objects for repos' do
+      VCR.use_cassette('listing_new') do
+        token = ENV['reddit_token']
+        url = '/new'
+        repos = Listing.get_listings(token, url)
         repo = repos.first
 
         expect(repos).to be_an(Array)
@@ -65,5 +82,96 @@ describe Listing do
         expect(repo).to respond_to(:author)
       end
     end
+
+    it 'returns rising listing objects for repos' do
+      VCR.use_cassette('listing_rising') do
+        token = ENV['reddit_token']
+        url = '/rising'
+        repos = Listing.get_listings(token, url)
+        repo = repos.first
+
+        expect(repos).to be_an(Array)
+        expect(repo).to be_a(Listing)
+        expect(repo).to respond_to(:title)
+        expect(repo).to respond_to(:thumbnail)
+        expect(repo).to respond_to(:author)
+      end
+    end
+
+      it 'returns controversial listing objects for repos' do
+      VCR.use_cassette('listing_controversial') do
+        token = ENV['reddit_token']
+        url = '/controversial'
+        repos = Listing.get_listings(token, url)
+        repo = repos.first
+
+        expect(repos).to be_an(Array)
+        expect(repo).to be_a(Listing)
+        expect(repo).to respond_to(:title)
+        expect(repo).to respond_to(:thumbnail)
+        expect(repo).to respond_to(:author)
+      end
+    end
+
+      it 'returns top listing objects for repos' do
+      VCR.use_cassette('listing_top') do
+        token = ENV['reddit_token']
+        url = '/top'
+        repos = Listing.get_listings(token, url)
+        repo = repos.first
+
+        expect(repos).to be_an(Array)
+        expect(repo).to be_a(Listing)
+        expect(repo).to respond_to(:title)
+        expect(repo).to respond_to(:thumbnail)
+        expect(repo).to respond_to(:author)
+      end
+    end
+
+      it 'returns gilded listing objects for repos' do
+      VCR.use_cassette('listing_gilded') do
+        token = ENV['reddit_token']
+        url = '/gilded'
+        repos = Listing.get_listings(token, url)
+        repo = repos.first
+
+        expect(repos).to be_an(Array)
+        expect(repo).to be_a(Listing)
+        expect(repo).to respond_to(:title)
+        expect(repo).to respond_to(:thumbnail)
+        expect(repo).to respond_to(:author)
+      end
+    end
+
+    xit 'returns wiki listing objects for repos' do
+      VCR.use_cassette('listing_wiki') do
+        token = ENV['reddit_token']
+        url = '/wiki'
+        repos = Listing.get_listings(token, url)
+        repo = repos.first
+
+        expect(repos).to be_an(Array)
+        expect(repo).to be_a(Listing)
+        expect(repo).to respond_to(:title)
+        expect(repo).to respond_to(:thumbnail)
+        expect(repo).to respond_to(:author)
+      end
+    end
+
+    xit 'returns promoted listing objects for repos' do
+      VCR.use_cassette('listing_promoted') do
+        token = ENV['reddit_token']
+        url = '/promoted'
+        repos = Listing.get_listings(token, url)
+        repo = repos.first
+
+        expect(repos).to be_an(Array)
+        expect(repo).to be_a(Listing)
+        expect(repo).to respond_to(:title)
+        expect(repo).to respond_to(:thumbnail)
+        expect(repo).to respond_to(:author)
+      end
+    end
+
   end
 end

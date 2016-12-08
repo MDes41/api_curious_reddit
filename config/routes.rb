@@ -4,5 +4,12 @@ Rails.application.routes.draw do
   get '/authorize', to: 'sessions#create'
   get '/dashboard', to: 'dashboard#index'
   get '/hot', to: 'hot#index'
-  # get "https://www.reddit.com/api/v1/authorize.compact?client_id=#{ENV['reddit_client_id']}&response_type=code&state=xxx&redirect_uri=http://127.0.0.1:3000&duration=permanent&scope=identity"
+  get '/new', to: 'new#index'
+  get '/rising', to: 'rising#index'
+  get '/controversial', to: 'controversial#index'
+  get '/top', to: 'top#index'
+  get '/gilded', to: 'gilded#index'
+  get '/wiki', to: 'wiki#index'
+  get '/promoted', to: 'promoted#index'
+  get '/logout', to: 'sessions#destroy'
 end

@@ -13,13 +13,13 @@ class RedditApi
 		JSON.parse(user_info_response(token).body, symbolize_names: true)
 	end
 
-	def get_listings(token)
-		JSON.parse(listings_response(token).body, symbolize_names: true)
+	def get_listings(token, url)
+		JSON.parse(listings_response(token, url).body, symbolize_names: true)
 	end
 
-	def listings_response(token)
+	def listings_response(token, url)
 		conn2.get do |req|
-			req.url '/hot'
+			req.url url
 			req.headers[:Authorization] = "bearer #{token}"
 		end
 	end

@@ -12,6 +12,7 @@
  *
  */
 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -68,6 +69,25 @@
     margin-bottom: 0px;
 }
 
-.listin {
+.listing {
     padding-top: 50px;
 }
+.thumbnail.default {
+    background-image: url(https://www.redditstatic.com/sprite-reddit.6Om8v6KMv28.png);
+    background-position: 90px -229px;
+    background-repeat: no-repeat;
+    background-size: 70px 837px;
+    height: 55px;
+}
+.thumbnail {
+    border: none;
+    height: 50px;
+}
+.thumbnail.self {
+    background-image: url(https://www.redditstatic.com/sprite-reddit.6Om8v6KMv28.png);
+    background-position: 90px -1267px;
+    background-repeat: no-repeat;
+    height: 50px;
+}
+
+

@@ -1,14 +1,8 @@
 <div class='container'>
 	<% @listings.each do |listing| %>
 		<div class='row listing'>
-				<% if listing.thumbnail == 'default' %>
-					<div class="col-md-2 thumbnail default may-blank loggedin outbound ">
-				<% elsif listing.thumbnail == 'self' %>
-					<div class="col-md-2 thumbnail self may-blank loggedin outbound ">
-				<% else %>
-					<div class="col-md-2 thumbnail self may-blank loggedin outbound ">
+				<div class="col-md-2">
 						<image src=<%= listing.thumbnail %>></image>
-				<% end %>
 				</div>
 				<div class='col-md-2'>
 					<div class='row'>

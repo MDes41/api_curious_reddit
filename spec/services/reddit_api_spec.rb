@@ -29,7 +29,7 @@ describe 'Reddit Token' do
 
 		it 'gets listing back for whats hot' do
 			VCR.use_cassette('listings') do
-				response = RedditApi.new.get_listings(ENV['reddit_token'])
+				response = RedditApi.new.get_listings(ENV['reddit_token'], '/hot')
 
 				expect(response).to be_a(Hash)
 				expect(response).to have_key(:kind)

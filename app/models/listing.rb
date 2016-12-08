@@ -1,22 +1,26 @@
 class Listing
 	def initialize(response)
-		@response = response[:data]
+		@response = response
 	end
 
 	def title
-		@response[:title]
+		@response[:data][:title]
 	end
 
 	def thumbnail
-		@response[:thumbnail]
+		@response[:data][:thumbnail]
 	end
 
 	def author
-		@response[:author]
+		@response[:data][:author]
 	end
 
-	def self.get_listings(token)
-		RedditApi.new.get_listings(token)[:data][:children].map do |raw_listing|
+	def kind
+		@response[:kind]
+	end
+
+	def self.get_listings(token, url)
+		RedditApi.new.get_listings(token, url)[:data][:children].map do |raw_listing|
 			Listing.new(raw_listing)
 		end
 	end

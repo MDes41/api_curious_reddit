@@ -18,27 +18,25 @@
 
         <ul class='tabmenu'>
           <li class='tab'><a href="/hot" class="choice">hot</a>
-          <li class='tab'><a href="/dashboard" class="choice">new</a>
-          <li class='tab'><a href="/dashboard" class="choice">rising</a>
-          <li class='tab'><a href="/dashboard" class="choice">controversial</a>
-          <li class='tab'><a href="/dashboard" class="choice">top</a>
-          <li class='tab'><a href="/dashboard" class="choice">guilded</a>
-          <li class='tab'><a href="/dashboard" class="choice">wiki</a>
-          <li class='tab'><a href="/dashboard" class="choice">promoted</a>
+          <li class='tab'><a href="/new" class="choice">new</a>
+          <li class='tab'><a href="/rising" class="choice">rising</a>
+          <li class='tab'><a href="/controversial" class="choice">controversial</a>
+          <li class='tab'><a href="/top" class="choice">top</a>
+          <li class='tab'><a href="/gilded" class="choice">guilded</a>
+          <li class='tab'><a href="/wiki" class="choice">wiki</a>
+          <li class='tab'><a href="/promoted" class="choice">promoted</a>
         </ul>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
+      <ul class="nav navbar-nav navbar-right tabmenu">
+        <% if session[:user_id] %>
+          <li>Logged in as</li>
+          <li><a class='span' href='/profile'><%= current_user.username %></a></li>
+          <li>(<%= current_user.karma %>)</li>
+          <li> - </li>
+          <li><a href="/logout">Loggout</a></li>
+        <% else %>
+          <li><a href="/login">Login</a></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
