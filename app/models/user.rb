@@ -6,5 +6,6 @@ class User < ApplicationRecord
 		user.access_token = attrs[:access_token]
 		user.karma = attrs[:karma]
 		user.save
+		user
 	end
 end
